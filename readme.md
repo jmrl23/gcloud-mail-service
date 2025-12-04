@@ -79,7 +79,7 @@ gcloud functions deploy mail-service \
   --set-env-vars API_KEY=YOUR_KEY,GMAIL_USER=YOUR_EMAIL,GMAIL_PASS=YOUR_PASS,EMAIL_FALLBACK_RECEIVER=YOUR_FALLBACK
 ```
 
-> **Note:** This project includes a `.vscode/launch.json` configuration for deploying via the [Google Cloud Code](https://cloud.google.com/code/docs/vscode/deploying-cloud-functions) extension.
+> **Note:** This project includes a `.vscode/launch.json` configuration for deploying via the [Google Cloud Code](https://docs.cloud.google.com/code/docs/vscode) extension.
 
 ## Authentication
 
