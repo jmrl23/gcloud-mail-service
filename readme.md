@@ -70,14 +70,16 @@ Deploy to Google Cloud Functions:
 ```bash
 gcloud functions deploy mail-service \
   --gen2 \
-  --runtime=nodejs20 \
-  --region=YOUR_REGION \
+  --runtime=nodejs22 \
+  --region=us-east1 \
   --source=. \
   --entry-point=main \
   --trigger-http \
   --allow-unauthenticated \
   --set-env-vars API_KEY=YOUR_KEY,GMAIL_USER=YOUR_EMAIL,GMAIL_PASS=YOUR_PASS,EMAIL_FALLBACK_RECEIVER=YOUR_FALLBACK
 ```
+
+> **Note:** This project includes a `.vscode/launch.json` configuration for deploying via the [Google Cloud Code](https://cloud.google.com/code/docs/vscode/deploying-cloud-functions) extension.
 
 ## Authentication
 
@@ -109,16 +111,19 @@ This API requires an API key to be passed in the `x-api-key` header.
 
 ## Sample Usage
 
+Send a rich HTML welcome email:
+
 ```bash
-curl -X POST https://REGION-PROJECT_ID.cloudfunctions.net/email-sender/send \
+curl -X POST https://REGION-PROJECT_ID.cloudfunctions.net/mail-service/send \
   -H "Content-Type: application/json" \
   -H "x-api-key: your-secret-api-key" \
   -d '{
-    "name": "John Doe",
-    "replyTo": "john.doe@example.com",
-    "subject": "Hello from API",
-    "text": "This is a test email sent via the Personal Email Sender API.",
-    "to": ["recipient@example.com"]
+    "name": "MyApp Team",
+    "replyTo": "support@myapp.com",
+    "to": ["new.user@example.com"],
+    "subject": "Welcome to MyApp! 🚀",
+    "text": "Hi there! Welcome to MyApp. We are thrilled to have you.",
+    "html": "<div style=\"font-family: sans-serif; padding: 20px;\"><h1>Welcome to MyApp!</h1><p>We are <b>thrilled</b> to have you on board.</p><p>Click <a href=\"https://myapp.com\">here</a> to get started.</p></div>"
   }'
 ```
 
@@ -129,15 +134,15 @@ curl -X POST https://REGION-PROJECT_ID.cloudfunctions.net/email-sender/send \
 ```json
 {
   "data": {
-    "accepted": ["recipient@example.com"],
+    "accepted": ["new.user@example.com"],
     "rejected": [],
     "envelopeTime": 123,
     "messageTime": 456,
     "messageSize": 789,
     "response": "250 2.0.0 OK",
     "envelope": {
-      "from": "sender@example.com",
-      "to": ["recipient@example.com"]
+      "from": "sender@gmail.com",
+      "to": ["new.user@example.com"]
     },
     "messageId": "<...>"
   }
