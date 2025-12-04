@@ -15,7 +15,7 @@ A Google Cloud Function that provides a secure HTTP API for sending emails using
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/jmrl23/gcloud-mail-service.git
    cd mail-service
    ```
 
