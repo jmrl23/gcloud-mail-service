@@ -6,9 +6,9 @@ A Google Cloud Function that provides a secure HTTP API for sending emails using
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [Node.js](https://nodejs.org/)
 - [Yarn](https://yarnpkg.com/)
-- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) (for deployment)
+- [Google Cloud SDK](https://docs.cloud.google.com/code/docs/vscode) (for deployment)
 
 ### Installation
 
